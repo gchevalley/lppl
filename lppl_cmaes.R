@@ -84,7 +84,7 @@ residuals_with_ts_obj <- function(x, ts) {
   return(residuals_with_ts(ts, x[1], x[2], x[3]))
 }
 
-for (i in 0:2) {
+for (i in 0:nbre_step_backward) {
   to <- to_base
   to <- to-i
   
