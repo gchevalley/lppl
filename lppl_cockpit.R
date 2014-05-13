@@ -127,6 +127,6 @@ for (j in 1:nrow(list_ticker)) {
 
 
 
-colnames(df_result) <- c("ticker," , "date_from", "date_to", "t", "price", "step_backward", "nbre_generation", "t_until_critical_point", "days_before_critical_time", "m", "omega", "tc", "A", "B", "C1", "C2")
+colnames(df_result) <- c("ticker" , "date_from", "date_to", "t", "price", "step_backward", "nbre_generation", "t_until_critical_point", "days_before_critical_time", "m", "omega", "tc", "A", "B", "C1", "C2")
 nowdatetime <- paste(format(Sys.Date(), "%Y%m%d"), format(Sys.time(), "%H%M%S"), sep="_")
 write.csv(df_result, paste('./cockpit/', 'cockpit_analysis_done_on_', nowdatetime, "_from_", date_txt_from, "_to_", date_txt_to_base, ".csv", sep=''), row.names = FALSE)
