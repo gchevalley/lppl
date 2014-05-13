@@ -5,7 +5,8 @@ library('parallel')
 
 #setwd('/Users/gregorychevalley/Documents/R/lppl/') # mac mini
 #setwd('C:/Users/Gregory Chevalley/RStudio/lppl/') # notebook
-setwd('C:/Users/Gregory Chevalley/Documents/lppl/') # server
+#setwd('C:/Users/Gregory Chevalley/Documents/lppl/') # server
+setwd('~/lppl/') # vps
 
 rm(list=ls())
 
@@ -112,7 +113,7 @@ for (j in 1:nrow(list_ticker)) {
       
       last_row <- tail(rTicker, 1) #pour recuperer le dernier prix et t
       
-      test <- cma_es(c(0.01, 5, max(rTicker$t)+0.002), residuals_with_ts_obj, rTicker, lower=c(0.1, 5, max(rTicker$t)+0.002), upper=c(0.9, 16, max(rTicker$t)+2), control=vec_control)
+      test <- cma_es(c(0.1, 5, max(rTicker$t)+0.002), residuals_with_ts_obj, rTicker, lower=c(0.1, 5, max(rTicker$t)+0.002), upper=c(0.9, 16, max(rTicker$t)+2), control=vec_control)
       
       linear_param <- getlinear_param(test$par[1], test$par[2], test$par[3])
       

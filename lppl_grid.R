@@ -3,7 +3,10 @@ library('zoo')
 
 
 #setwd('/Users/gregorychevalley/Documents/R/lppl/') # mac mini
-setwd('C:/Users/Gregory Chevalley/RStudio/lppl/') # notebook
+#setwd('C:/Users/Gregory Chevalley/RStudio/lppl/') # notebook
+#setwd('C:/Users/Gregory Chevalley/Documents/lppl/') # server
+setwd('~/lppl/') # vps
+
 rm(list=ls())
 
 fileName <- './data/omx.csv'
@@ -76,8 +79,8 @@ getcoeff_regLPPL <- function(m, omega, tc) {
 
 
 #tryParams(0.3424, 5.518, 1998.686) # soluce paper
-m <- seq(0.1, 0.5, 0.05)
-omega <- seq(6, 13, 0.5)
+m <- seq(0.1, 0.9, 0.05)
+omega <- seq(5, 15, 0.5)
 tc <- seq(max(rTicker$t)+0.002, max(rTicker$t)+0.25, 0.0135) # a 3 mois
 
 
