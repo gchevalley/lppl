@@ -11,6 +11,7 @@ rm(list=ls())
 
 fileName <- './data/omx.csv'
 ticker <- read.csv(fileName, header=TRUE, sep=";")
+ticker <- ticker[with(ticker, order(-t)), ]
 
 
 ticker$Date <- as.Date(ticker$Date)

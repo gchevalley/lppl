@@ -82,6 +82,7 @@ for (j in 1:nrow(list_ticker)) {
   filePath <- paste('./cockpit/' , fileName, sep='')
   fileSName <- substr(filePath,nchar('./cockpit/')+1, nchar(filePath)-4)
   ticker <- read.csv(filePath, header=TRUE, sep=",")
+  ticker <- ticker[with(ticker, order(t)), ]
   
   last_row_timeserie <-ticker[nrow(ticker),]
   first_row_timeserie <- ticker[1,]

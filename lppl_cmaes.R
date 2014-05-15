@@ -4,21 +4,23 @@ library('zoo')
 
 #setwd('/Users/gregorychevalley/Documents/R/lppl/') # mac mini
 #setwd('C:/Users/Gregory Chevalley/RStudio/lppl/') # notebook
-#setwd('C:/Users/Gregory Chevalley/Documents/lppl/') # server
-setwd('~/lppl/') # vps
+setwd('C:/Users/Gregory Chevalley/Documents/lppl/') # server
+#setwd('~/lppl/') # vps
 
 rm(list=ls())
 
-fileName <- 'DJA.csv'
+fileName <- 'spx.csv'
 filePath <- paste('./data/' , fileName, sep='')
 fileSName <- substr(filePath,nchar('./data/')+1, nchar(filePath)-4)
 ticker <- read.csv(filePath, header=TRUE, sep=",")
+ticker <- ticker[with(ticker, order(t)), ]
 
-date_txt_from = "1927-06-30"
-date_txt_to_base = "1929-10-26"
 
-nbre_step_backward <- 600
-nbre_generation <- 50
+date_txt_from = "2003-03-12"
+date_txt_to_base = "2013-03-31"
+
+nbre_step_backward <- 5
+nbre_generation <- 100
 
 
 ticker$Date <- as.Date(ticker$Date)
@@ -109,4 +111,4 @@ for (i in 0:nbre_step_backward) {
 
 colnames(df_result) <- c("date_from", "date_to", "t", "price", "step_backward", "nbre_generation", "t_until_critical_point", "days_before_critical_time", "m", "omega", "tc", "A", "B", "C1", "C2")
 nowdatetime <- paste(format(Sys.Date(), "%Y%m%d"), format(Sys.time(), "%H%M%S"), sep="_")
-write.csv(df_result, paste('./data/', fileSName, '_analysis_done_on_', nowdatetime, "_from_", date_txt_from, "_to_", date_txt_to_base, ".csv", sep=''))
+write.csv(df_result, paste('./data/', fileSName, '_analysis_done_on_', nowdatetime, "_from_", date_txt_from, "_to_", date_txt_to_base, ".csv", sep=''), row.names = FALSE)
