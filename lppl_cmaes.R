@@ -17,9 +17,9 @@ ticker <- ticker[with(ticker, order(t)), ]
 
 
 date_txt_from = "2003-03-12"
-date_txt_to_base = "2013-03-31"
+date_txt_to_base = "2010-03-31"
 
-nbre_step_backward <- 5
+nbre_step_backward <- 2400
 nbre_generation <- 100
 
 
