@@ -66,7 +66,7 @@ FittedLPPLwithexpected <- function(data, lm.result, x_vector, m=1, omega=1, tc=0
 
 getlinear_param <- function(m, omega, tc) {
   lm.result <- LPPL(rTicker, m, omega, tc)
-  getcoeff_regLPPL <- c(lm.result$coefficients[1],lm.result$coefficients[2], lm.result$coefficients[3], lm.result$coefficients[4])
+  return(c(lm.result$coefficients[1],lm.result$coefficients[2], lm.result$coefficients[3], lm.result$coefficients[4]))
 }
 
 
