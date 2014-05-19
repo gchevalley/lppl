@@ -30,14 +30,14 @@ For i = 0 To UBound(vec_needed_wrksht, 1)
     found_sheet = False
 
     For Each tmp_wrksht In Worksheets
-        If tmp_wrksht.Name = vec_needed_wrksht(i) Then
+        If tmp_wrksht.name = vec_needed_wrksht(i) Then
             found_sheet = True
         End If
     Next
     
     If found_sheet = False Then
         Set tmp_wrksht = Worksheets.Add(, base_dataset_wrksht)
-            tmp_wrksht.Name = vec_needed_wrksht(i)
+            tmp_wrksht.name = vec_needed_wrksht(i)
     End If
     
 Next i
@@ -166,11 +166,9 @@ For i = 3 To 600000
             Worksheets("vert").Cells(5, c_vert) = tmp_ticker
             Worksheets("vert").Range(Worksheets("visu").Cells(6, c_vert).Address).SparklineGroups.Add Type:=xlSparkLine, SourceData:="reverse!E" & tmp_first_line_ts & ":E" & i - 1
             
-            If Worksheets("reverse").Cells(i - 1, 9) < 650 Then
-                Worksheets("vert").Cells(7, c_vert) = Worksheets("reverse").Cells(i - 1, 10)
-                Worksheets("vert").Cells(8, c_vert) = Worksheets("reverse").Cells(i - 1, 11)
-                Worksheets("vert").Cells(9, c_vert) = Worksheets("reverse").Cells(i - 1, 9)
-            End If
+            Worksheets("vert").Cells(7, c_vert) = Worksheets("reverse_clean").Cells(i - 1, 10)
+            Worksheets("vert").Cells(8, c_vert) = Worksheets("reverse_clean").Cells(i - 1, 11)
+            Worksheets("vert").Cells(9, c_vert) = Worksheets("reverse_clean").Cells(i - 1, 9)
             
             Worksheets("vert").Range(Worksheets("visu").Cells(11, c_vert).Address).SparklineGroups.Add Type:=xlSparkLine, SourceData:="reverse!J" & tmp_first_line_ts & ":J" & i - 1
             Worksheets("vert").Range(Worksheets("visu").Cells(12, c_vert).Address).SparklineGroups.Add Type:=xlSparkLine, SourceData:="reverse!K" & tmp_first_line_ts & ":K" & i - 1
@@ -189,6 +187,13 @@ For i = 3 To 600000
             Worksheets("vert_clean").Range(Worksheets("vert_clean").Cells(11, c_vert).Address).SparklineGroups.Add Type:=xlSparkLine, SourceData:="reverse_clean!J" & tmp_first_line_ts & ":J" & i - 1
             Worksheets("vert_clean").Range(Worksheets("vert_clean").Cells(12, c_vert).Address).SparklineGroups.Add Type:=xlSparkLine, SourceData:="reverse_clean!K" & tmp_first_line_ts & ":K" & i - 1
             Worksheets("vert_clean").Range(Worksheets("vert_clean").Cells(13, c_vert).Address).SparklineGroups.Add Type:=xlSparkLine, SourceData:="reverse_clean!I" & tmp_first_line_ts & ":I" & i - 1
+            
+            
+            If Worksheets("reverse").Cells(i - 1, 9) < 650 Then
+                Worksheets("vert_clean").Cells(7, c_vert) = Worksheets("reverse_clean").Cells(i - 1, 10)
+                Worksheets("vert_clean").Cells(8, c_vert) = Worksheets("reverse_clean").Cells(i - 1, 11)
+                Worksheets("vert_clean").Cells(9, c_vert) = Worksheets("reverse_clean").Cells(i - 1, 9)
+            End If
             
             
             c_vert = c_vert + 1
